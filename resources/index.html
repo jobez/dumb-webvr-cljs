@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>hi, world!</title>
+    <script src="js/three.min.js"></script>
+
+<!-- VRControls.js acquires positional information from connected VR
+  devices and applies the transformations to a three.js camera object.
+  -->
+<script src="js/VRControls.js"></script>
+
+<!--
+  VREffect.js handles stereo camera setup and rendering.
+  -->
+<script src="js/VREffect.js"></script>
+
+<!--
+  A polyfill for WebVR using the Device{Motion,Orientation}Event API.
+  -->
+<script src="js/webvr-polyfill.js"></script>
+
+<!--
+  Helps enter and exit VR mode, provides best practices while in VR.
+  -->
+<script src="js/webvr-manager.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>

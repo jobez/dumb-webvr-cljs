@@ -1,0 +1,2 @@
+{:require  [dumb-webvr-demo.app]
+ :init-fns [dumb-webvr-demo.app/init]}
