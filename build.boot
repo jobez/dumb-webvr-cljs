@@ -1,6 +1,6 @@
 (set-env!
  :source-paths    #{"src/cljs"}
- :resource-paths  #{"resources"}
+ :resource-paths  #{"resources" "src/clj"}
  :dependencies '[[adzerk/boot-cljs      "0.0-2629-9" :scope "test"]
                  [adzerk/boot-cljs-repl "0.1.8"      :scope "test"]
                  [adzerk/boot-reload    "0.2.4"      :scope "test"]
@@ -26,12 +26,12 @@
         (build)))
 
 (deftask production []
-  (task-options! cljs {:optimizations :advanced
+  (task-options! cljs {:optimizations :whitespace
                        ;; pseudo-names true is currently required
                        ;; https://github.com/martinklepsch/pseudo-names-error
                        ;; hopefully fixed soon
                        :pseudo-names true})
-  identity)
+  (build))
 
 (deftask development []
   (task-options! cljs {:optimizations :none

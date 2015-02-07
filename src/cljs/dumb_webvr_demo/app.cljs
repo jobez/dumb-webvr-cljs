@@ -1,7 +1,7 @@
 (ns dumb-webvr-demo.app
   (:require-macros [dumb-webvr-demo.macros :refer [+=]])
   (:require [goog.debug :as debug]))
-
+;
 (enable-console-print!)
 
 (defn grab-nested-attr [obj attr-name]
@@ -44,7 +44,7 @@
 ;; create a vr manager helper to enter and exit vr mode
 (def vrmgr (js/WebVRManager. effect))
 
-;; create 3d objects
+;; create 3d objectz
 (def geometry (box-geometry. 10 10 10))
 (def material (mesh-normal-material.))
 (def cube (mesh. geometry material))
@@ -53,17 +53,15 @@
 (.. scene (add cube))
 (set! (.. cube -position -z) -20)
 
+
+
 (defn animate! []
-  (let [rotation-state-val (.. cube -rotation -y)]
-      #_(+= (.. cube -rotation -y) 0.01)
-      (set! (.. cube -rotation -y) (+ rotation-state-val 0.01))
-      (.. controls update)
-
-      (if (.. vrmgr isVRMode)
-        (.. effect (render scene camera))
-        (.. renderer (render scene camera)))
-
-      (js/requestAnimationFrame animate!)))
+  (+= cube 0.01 "rotation" (rand-nth ["x" "y" "z"]))
+  (.. controls update)
+  (if (.. vrmgr isVRMode)
+    (.. effect (render scene camera))
+    (.. renderer (render scene camera)))
+  (js/requestAnimationFrame animate!))
 
 (animate!)
 
